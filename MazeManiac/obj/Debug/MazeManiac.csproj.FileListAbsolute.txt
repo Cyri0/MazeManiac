@@ -1,0 +1,7 @@
+C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\bin\Debug\MazeManiac.exe.config
+C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\bin\Debug\MazeManiac.exe
+C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\bin\Debug\MazeManiac.pdb
+C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.csprojAssemblyReference.cache
+C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.csproj.CoreCompileInputs.cache
+C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.exe
+C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.pdb
