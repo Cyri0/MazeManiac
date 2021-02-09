@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MazeManiac
 {
@@ -15,7 +11,11 @@ namespace MazeManiac
             bool gameIsRunning = true;
 
             while (gameIsRunning) {
-                char command = Console.ReadKey().KeyChar;
+                
+                char command = Console.ReadKey(true).KeyChar;
+
+                Console.Clear();
+
                 switch (command) {
                     case 'w': map1.up(); break;
                     case 's': map1.down(); break;
@@ -24,8 +24,9 @@ namespace MazeManiac
                     case 'f': Console.WriteLine(map1.whereAmI()[0] + "|"+map1.whereAmI()[1]); break;
                     default: Console.WriteLine("Nincs ilyen parancs!"); break;
                 }
-
+                
                 map1.showMap();
+                map1.showAndClearMessage();
             }
 
             Console.ReadKey();
@@ -36,15 +37,18 @@ namespace MazeManiac
     {
         private char[,] map;
         private String mapname;
+        private string message;
+
 
         public MapHandler(String name) {
             this.mapname = name;
+            this.message = "";
             this.map = new char[,] 
             {
-                {'#','@','#','#','#'},
+                {'#','.','#','#','#'},
                 {'#','.','.','.','#'},
                 {'#','.','#','.','#'},
-                {'#','.','#','.','x'},
+                {'#','@','#','.','x'},
                 {'#','#','#','#','#'}
             };
         }
@@ -67,6 +71,11 @@ namespace MazeManiac
             }
         }
 
+        public void showAndClearMessage() {
+            Console.WriteLine(this.message);
+            this.message = "";
+        }
+
         public int[] whereAmI() {
             int[] pos = { 0, 0 };
 
@@ -84,9 +93,91 @@ namespace MazeManiac
 
             return pos;
         }
-        public void up() { }
-        public void down() { }
-        public void right() { }
-        public void left() { }
+        public void up() {
+            int[] pos = whereAmI();
+            int x = pos[0];
+            int y = pos[1];
+
+            try {
+                if (map[x - 1, y] == '.')
+                {
+                    map[x - 1, y] = '@';
+                    map[x, y] = '.';
+                }
+                else {
+                    this.message += "Falba ütköztél!";
+                }
+            }
+            catch (IndexOutOfRangeException e) {
+                this.message += "Elérted a pálya szélét!";
+            }
+        }
+
+        public void down() {
+            int[] pos = whereAmI();
+            int x = pos[0];
+            int y = pos[1];
+
+            try
+            {
+                if (map[x + 1, y] == '.')
+                {
+                    map[x + 1, y] = '@';
+                    map[x, y] = '.';
+                }
+                else
+                {
+                    this.message += "Falba ütköztél!";
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                this.message += "Elérted a pálya szélét!";
+            }
+        }
+        public void right() {
+            int[] pos = whereAmI();
+            int x = pos[0];
+            int y = pos[1];
+
+            try
+            {
+                if (map[x, y+1] == '.')
+                {
+                    map[x, y+1] = '@';
+                    map[x, y] = '.';
+                }
+                else
+                {
+                    this.message += "Falba ütköztél!";
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                this.message += "Elérted a pálya szélét!";
+            }
+        }
+        public void left() {
+            int[] pos = whereAmI();
+            int x = pos[0];
+            int y = pos[1];
+
+            try
+            {
+                if (map[x, y - 1] == '.')
+                {
+                    map[x, y - 1] = '@';
+                    map[x, y] = '.';
+                }
+                else
+                {
+                    this.message += "Falba ütköztél!";
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                this.message += "Elérted a pálya szélét!";
+            }
+        }
     }
 }

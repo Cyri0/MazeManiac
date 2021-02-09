@@ -5,3 +5,10 @@ C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.c
 C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.csproj.CoreCompileInputs.cache
 C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.exe
 C:\Users\tanar\Documents\NT\Project\MazeManiac\MazeManiac\obj\Debug\MazeManiac.pdb
+C:\Users\Nemes Tamás\Desktop\KomplexProg\MazeManiac\MazeManiac\obj\Debug\MazeManiac.exe
+C:\Users\Nemes Tamás\Desktop\KomplexProg\MazeManiac\MazeManiac\obj\Debug\MazeManiac.pdb
+C:\Users\Nemes Tamás\Desktop\KomplexProg\MazeManiac\MazeManiac\bin\Debug\MazeManiac.exe.config
+C:\Users\Nemes Tamás\Desktop\KomplexProg\MazeManiac\MazeManiac\bin\Debug\MazeManiac.exe
+C:\Users\Nemes Tamás\Desktop\KomplexProg\MazeManiac\MazeManiac\bin\Debug\MazeManiac.pdb
+C:\Users\Nemes Tamás\Desktop\KomplexProg\MazeManiac\MazeManiac\obj\Debug\MazeManiac.csprojAssemblyReference.cache
+C:\Users\Nemes Tamás\Desktop\KomplexProg\MazeManiac\MazeManiac\obj\Debug\MazeManiac.csproj.CoreCompileInputs.cache
