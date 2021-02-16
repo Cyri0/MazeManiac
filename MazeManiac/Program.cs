@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace MazeManiac
 {
@@ -6,10 +7,10 @@ namespace MazeManiac
     {
         static void Main(string[] args)
         {
-            MapHandler map1 = new MapHandler("Elso palya");
+            MapHandler map1 = new MapHandler("elso.txt");
 
             bool gameIsRunning = true;
-
+            map1.showMap();
             while (gameIsRunning) {
                 
                 char command = Console.ReadKey(true).KeyChar;
@@ -39,9 +40,8 @@ namespace MazeManiac
         private String mapname;
         private string message;
 
-
-        public MapHandler(String name) {
-            this.mapname = name;
+        public MapHandler() {
+            this.mapname = "Default";
             this.message = "";
             this.map = new char[,] 
             {
@@ -51,6 +51,32 @@ namespace MazeManiac
                 {'#','@','#','.','x'},
                 {'#','#','#','#','#'}
             };
+        }
+
+        public MapHandler(string filename) {
+            this.mapname = filename;
+            this.message = "";
+            try {
+
+                string[] lines = File.ReadAllLines(filename);
+
+                int width = lines[0].Length;
+                int height = lines.Length;
+
+                char[,] mapFromFile = new char[width,height];
+
+                for (int i = 0; i < lines.Length; i++) {
+                    for (int j = 0; j < lines[i].Length; j++) {
+                        char c = lines[i][j];
+                        mapFromFile[i, j] = c;
+                    }
+                }
+
+                this.map = mapFromFile;
+
+            } catch(FileNotFoundException e) {
+                Console.WriteLine("Hiba a fájl beolvasásakor!");
+            }
         }
 
         public String getName() {
@@ -93,36 +119,17 @@ namespace MazeManiac
 
             return pos;
         }
-        public void up() {
-            int[] pos = whereAmI();
-            int x = pos[0];
-            int y = pos[1];
 
-            try {
-                if (map[x - 1, y] == '.')
-                {
-                    map[x - 1, y] = '@';
-                    map[x, y] = '.';
-                }
-                else {
-                    this.message += "Falba ütköztél!";
-                }
-            }
-            catch (IndexOutOfRangeException e) {
-                this.message += "Elérted a pálya szélét!";
-            }
-        }
-
-        public void down() {
+        private void move(int xmod, int ymod) {
             int[] pos = whereAmI();
             int x = pos[0];
             int y = pos[1];
 
             try
             {
-                if (map[x + 1, y] == '.')
+                if (map[x + xmod, y + ymod] == '.')
                 {
-                    map[x + 1, y] = '@';
+                    map[x + xmod, y + ymod] = '@';
                     map[x, y] = '.';
                 }
                 else
@@ -134,50 +141,19 @@ namespace MazeManiac
             {
                 this.message += "Elérted a pálya szélét!";
             }
+        }
+
+        public void up() {
+            move(-1, 0);
+        }
+        public void down() {
+            move(1, 0);
         }
         public void right() {
-            int[] pos = whereAmI();
-            int x = pos[0];
-            int y = pos[1];
-
-            try
-            {
-                if (map[x, y+1] == '.')
-                {
-                    map[x, y+1] = '@';
-                    map[x, y] = '.';
-                }
-                else
-                {
-                    this.message += "Falba ütköztél!";
-                }
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                this.message += "Elérted a pálya szélét!";
-            }
+            move(0, 1);
         }
         public void left() {
-            int[] pos = whereAmI();
-            int x = pos[0];
-            int y = pos[1];
-
-            try
-            {
-                if (map[x, y - 1] == '.')
-                {
-                    map[x, y - 1] = '@';
-                    map[x, y] = '.';
-                }
-                else
-                {
-                    this.message += "Falba ütköztél!";
-                }
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                this.message += "Elérted a pálya szélét!";
-            }
+            move(0, -1);
         }
     }
 }
