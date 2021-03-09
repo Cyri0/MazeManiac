@@ -9,6 +9,9 @@ namespace MazeManiac
         {
             MapHandler map1 = new MapHandler("elso.txt");
 
+            
+
+
             bool gameIsRunning = true;
             map1.showMap();
             while (gameIsRunning) {
